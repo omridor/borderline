@@ -1,0 +1,29 @@
+{
+  "name": "borderline",
+  "description": "sexual harassment reporting",
+  "main": "server.js",
+  "authors": [
+    "Omri Dor <omridor@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "sexual",
+    "harassment"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "angular": "^1.5.0",
+    "angular-resource": "^1.5.0",
+    "bootstrap": "^3.3.6"
+  }
+}
