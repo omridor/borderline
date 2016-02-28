@@ -7,12 +7,14 @@ var express = require('express'),
 mongoose.connect('mongodb://localhost:27017/wakeupcall');
 
 app.use(bodyParser());
-app.get('/', function (req,res) {
+app.get(/(\/|\/report|\/home|\/admin)$/, function (req,res) {
     res.sendfile(__dirname + '/client/views/index.html');   
 });
 
 app.use('/js', express.static(__dirname + '/client/js'));
 app.use('/lib', express.static(__dirname + '/bower_components'));
+app.use('/views', express.static(__dirname + '/client/views'));
+
 
 app.get('/api/reports', reportsController.list);
 app.post('/api/reports', reportsController.create);

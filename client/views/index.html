@@ -1,38 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Borderline</title>
+  <base href="/">
   <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <script type="text/javascript" src="/lib/angular/angular.js"></script>
   <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+  <script src="/lib/angular-ui-router/release/angular-ui-router.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
   <script type="text/javascript" src="/js/controllers/reports-controller.js"></script>
 </head>
-<body ng-app="borderlineApp" ng-controller="reportsController">
+
+<body ng-app="borderlineApp">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="page-header">
-        <h1>There are {{reports.length}} reports</h1>
-      </div>
-      <ul>
-        <li ng-repeat="report in reports">
-            {{report.culpritName}}
-        </li>
-      </ul>
-
-      <form ng-submit="createReport()"
-        style="margin-top:30px;">
-        <h3>Report someone</h3>
-
-        <div class="form-group">
-          <input type="text"
-            class="form-control"
-            placeholder="Name"
-            ng-model="culpritName"></input>
-        </div>
-        <button type="submit" class="btn btn-primary">Report</button>
-      </form>
+    <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+      <ui-view></ui-view>
     </div>
   </div>
 </body>
+
 </html>
