@@ -1,14 +1,11 @@
 app.controller('reportsController',['$scope', '$resource', function($scope, $resource) {
     var Report = $resource('api/reports');
-
+    
+    $scope.reports = [];
     Report.query(function (results) {
         $scope.reports = results;
     });
 
-    $scope.reports = [
-        {culpritName: "John"},
-        {culpritName: "Doe"}
-    ];
     $scope.createReport = function() {
         var report = new Report();
         report.culpritName = $scope.culpritName;
@@ -18,5 +15,4 @@ app.controller('reportsController',['$scope', '$resource', function($scope, $res
             $scope.culpritName='';
         });
     };
-    
 }]);
