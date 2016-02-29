@@ -88,18 +88,18 @@ app.controller('ReportSubmissionController',['$scope', '$resource', function($sc
     $scope.submitReport = function() {
         console.log('trying to submit...');
         var report = new Report();
-        report.dateOfIncident = $scope.date;
-        report.severity = $scope.severity;
+        report.dateOfIncident = $scope.report.dateOfIncident;
+        report.severity = $scope.report.severity;
         report.ids = [];
         report.ids.push({idType: 'name',
-                         value: $scope.name});
-        if ($scope.email) {
+                         value: $scope.report.name});
+        if ($scope.report.email) {
             report.ids.push({idType: 'email',
-                             value: $scope.email});
+                             value: $scope.report.email});
         }
-        if ($scope.phoneNumber) {
+        if ($scope.report.phoneNumber) {
             report.ids.push({idType: 'phoneNumber',
-                             value: $scope.phoneNumber});
+                             value: $scope.report.phoneNumber});
         }
         report.$save(function(result) {
             console.log(result);
