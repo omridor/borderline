@@ -10,6 +10,7 @@ var gulp = require('gulp'),
   scsslint = require('gulp-scss-lint'),
   uglify = require('gulp-uglify'),
   livereload = require('gulp-livereload'),
+  concatCss = require('gulp-concat-css'),
   paths = {
     js: ['client/js/**/*.js'],
     html: ['client/views/**/*.html'],
@@ -34,6 +35,7 @@ gulp.task('build-css', function() {
   return gulp.src(paths.scss)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
+    .pipe(concatCss('styles.css'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist/css'))
     .pipe(livereload());
@@ -76,7 +78,7 @@ gulp.task('watch', function() {
 gulp.task('browserify', ['build-js', 'build-css', 'html']);
 
 // Server will restart if server code modified. 
-gulp.task('start', function () {
+gulp.task('start', ['browserify'], function () {
   nodemon({
     script: 'server.js',
     watch: 'server',
