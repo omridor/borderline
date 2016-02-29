@@ -21,7 +21,7 @@ app.controller('ReportSubmissionController',['$scope', '$resource', function($sc
 
     $scope.reportFields = [
     {
-        key: 'date',
+        key: 'dateOfIncident',
         type: 'datepicker',
         templateOptions: {
             label: 'Approximate Date of Incident',
@@ -63,7 +63,6 @@ app.controller('ReportSubmissionController',['$scope', '$resource', function($sc
             type: 'email',
             label: 'Offender\'s email address',
             placeholder: 'Email of Offender',
-            required: true
         }
     },
     {
@@ -73,7 +72,6 @@ app.controller('ReportSubmissionController',['$scope', '$resource', function($sc
             type: '',
             label: 'Offender\'s Phone Number',
             placeholder: 'Phone Number',
-            required: false
         },
         validators: {
             phoneNumber: function($viewValue, $modelValue, scope) {
@@ -88,11 +86,21 @@ app.controller('ReportSubmissionController',['$scope', '$resource', function($sc
     ];
 
     $scope.submitReport = function() {
+        console.log('trying to submit...');
         var report = new Report();
-        report.name = $scope.name;
+        report.dateOfIncident = $scope.date;
+        report.severity = $scope.severity;
         report.ids = [];
-        report.ids.push({idType: 'email',
-                          value: $scope.email});
+        report.ids.push({idType: 'name',
+                         value: $scope.name});
+        if ($scope.email) {
+            report.ids.push({idType: 'email',
+                             value: $scope.email});
+        }
+        if ($scope.phoneNumber) {
+            report.ids.push({idType: 'phoneNumber',
+                             value: $scope.phoneNumber});
+        }
         report.$save(function(result) {
             console.log(result);
         });

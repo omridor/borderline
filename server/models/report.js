@@ -10,6 +10,7 @@ module.exports.idTypes = {
 
 module.exports.Report = mongoose.model('Report', {
   submittedOn: { type: Date, default: Date.now, required: true},
-  //timeOfIncident: {type: Date, required: true},
+  dateOfIncident: {type: Date, required: true},
+  severity: {type: String, require: true},
   ids: [{idType: String, value: String}]
 });
