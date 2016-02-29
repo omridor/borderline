@@ -2,16 +2,16 @@ app.run(function(formlyConfig) {
 
   var severityLevels = [
     {
-        "name": "Severity 1 - Inappropriate verbal remarks",
-        "value": 1
+      "name": "Severity 1 - Repeating inappropriate verbal remarks",
+      "value": 1
     },
     {
-        "name":"Severity 2 - Uncomfortable physical contact",
-        "value": 2
+      "name":"Severity 2 - Repeating uncomfortable physical contact",
+      "value": 2
     },
     {
-        "name":"Severity 3 - Retaliatory behavior",
-        "value": 3
+      "name":"Severity 3 - Repeating forced physical contact",
+      "value": 3
     }
   ];
 
