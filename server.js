@@ -7,8 +7,8 @@ var express = require('express'),
 mongoose.connect('mongodb://localhost:27017/wakeupcall');
 
 app.use(bodyParser());
-app.get(/(\/|\/report|\/home|\/admin)$/, function (req, res) {
-    res.sendfile(__dirname + '/client/views/index.html');   
+app.get('*', function (req, res) {
+    res.sendfile(__dirname + '/dist/views/index.html');   
 });
 
 app.use('/dist', express.static(__dirname + '/dist'));
