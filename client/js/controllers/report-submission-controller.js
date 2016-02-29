@@ -4,21 +4,6 @@ app.controller('ReportSubmissionController',['$scope', '$resource', '$location',
     // Empty object will be populated by form.
     $scope.report = {};
 
-    var severityLevels = [
-        {
-            "name": "Severity 1 - Inappropriate verbal remarks",
-            "value": 1
-        },
-        {
-            "name":"Severity 2 - Uncomfortable physical contact",
-            "value": 2
-        },
-        {
-            "name":"Severity 3 - Retaliatory behavior",
-            "value": 3
-        }
-    ];
-
     $scope.reportFields = [
     {
         key: 'dateOfIncident',
@@ -39,11 +24,10 @@ app.controller('ReportSubmissionController',['$scope', '$resource', '$location',
     },
     {
         key: 'severity',
-        type: 'select',
+        type: 'severitySelect',
         templateOptions: {
             label: 'Severity of incident',
             required: true,
-            options: severityLevels
         }
     },
     {
@@ -52,7 +36,7 @@ app.controller('ReportSubmissionController',['$scope', '$resource', '$location',
         templateOptions: {
             type: 'text',
             label: 'Offender\'s Name',
-            placeholder: 'Full name of offender',
+            placeholder: 'Full Name',
             required: true
         }
     },
@@ -62,26 +46,16 @@ app.controller('ReportSubmissionController',['$scope', '$resource', '$location',
         templateOptions: {
             type: 'email',
             label: 'Offender\'s email address',
-            placeholder: 'Email of Offender',
+            placeholder: 'Email',
         }
     },
     {
         key: 'phoneNumber',
-        type: 'input',
+        type: 'phoneNumber',
         templateOptions: {
-            type: '',
             label: 'Offender\'s Phone Number',
             placeholder: 'Phone Number',
-        },
-        validators: {
-            phoneNumber: function($viewValue, $modelValue, scope) {
-                var value = $modelValue || $viewValue;
-                if(value) {
-                    return /^0[234578]\d{6}\d?\d?$/.test(value);
-                }
-           }
-       }
-
+        }
     }
     ];
 
