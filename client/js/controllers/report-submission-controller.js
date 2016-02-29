@@ -1,4 +1,4 @@
-app.controller('ReportSubmissionController',['$scope', '$resource', function($scope, $resource) {
+app.controller('ReportSubmissionController',['$scope', '$resource', '$location', function($scope, $resource, $location) {
     var Report = $resource('api/reports');
 
     // Empty object will be populated by form.
@@ -102,7 +102,10 @@ app.controller('ReportSubmissionController',['$scope', '$resource', function($sc
                              value: $scope.report.phoneNumber});
         }
         report.$save(function(result) {
-            console.log(result);
+            if (!result) {
+                alert("Something went wrong! Please try again later");
+            }
+            $location.path("done");
         });
     };
 }]);

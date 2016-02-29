@@ -12,7 +12,6 @@ app.post('/api/reports', reportsController.create);
 
 app.use('/dist', express.static(__dirname + '/dist'));
 app.use('/lib', express.static(__dirname + '/bower_components'));
-app.use('/views', express.static(__dirname + '/client/views'));
 
 app.get('*', function (req, res) {
     res.sendfile(__dirname + '/dist/views/index.html');   

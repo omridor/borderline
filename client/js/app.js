@@ -18,6 +18,10 @@ function($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('home', {
       url: '/home',
       templateUrl: '/dist/views/home.html'
+    })
+    .state('done', {
+      url: '/done',
+      templateUrl: '/dist/views/done.html'
     });
 
   $urlRouterProvider.otherwise('home');
