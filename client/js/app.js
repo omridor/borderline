@@ -1,4 +1,4 @@
-var app = angular.module('borderlineApp',['ngResource', 'ui.router']);
+var app = angular.module('borderlineApp',['ngResource', 'ui.router', 'formly', 'formlyBootstrap']);
 app.config([
 '$stateProvider',
 '$urlRouterProvider',
@@ -7,17 +7,17 @@ function($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('report', {
       url: '/report',
-      templateUrl: '/views/report.html',
-      controller: 'reportsController'
+      templateUrl: '/dist/views/report.html',
+      controller: 'reportSubmissionController'
     })
     .state('admin', {
       url: '/admin',
-      templateUrl: '/views/admin.html',
-      controller: 'reportsController'
+      templateUrl: '/dist/views/admin.html',
+      controller: 'adminController'
     })
     .state('home', {
       url: '/home',
-      templateUrl: '/views/home.html'
+      templateUrl: '/dist/views/home.html'
     });
 
   $urlRouterProvider.otherwise('home');

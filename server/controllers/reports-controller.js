@@ -1,4 +1,4 @@
-var Report = require('../models/report');
+var Report = require('../models/report').Report;
 
 module.exports.create = function (req, res) {
     var report = new Report(req.body);

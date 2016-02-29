@@ -1,14 +1,9 @@
 <div class="page-header">
   <h1>Report someone</h1>
 </div>
-<form ng-submit="createReport()"
-  style="margin-top:30px;">
-
-  <div class="form-group">
-    <input type="text"
-      class="form-control"
-      placeholder="Name"
-      ng-model="culpritName"></input>
-  </div>
-  <button type="submit" class="btn btn-primary">Report</button>
+<form novalidate>
+    <formly-form model="report" fields="reportFields" form="reportForm">
+        <button type="submit" class="btn btn-primary" ng-disabled="reportForm.$invalid">Submit Report</button>
+    </formly-form>
+</form>
 </form>
