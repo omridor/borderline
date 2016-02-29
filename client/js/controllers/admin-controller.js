@@ -1,4 +1,4 @@
-app.controller('adminController',['$scope', '$resource', function($scope, $resource) {
+app.controller('AdminController',['$scope', '$resource', function($scope, $resource) {
     var Report = $resource('api/reports');
     $scope.reports = [];
     Report.query(function (results) {

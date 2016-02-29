@@ -28,6 +28,7 @@
     "angular-ui-router": "^0.2.18",
     "angular-formly-templates-bootstrap": "^6.2.0",
     "api-check": "^7.5.5",
-    "angular-formly": "7.3.9"
+    "angular-formly": "7.3.9",
+    "angular-bootstrap": "^1.2.1"
   }
 }
