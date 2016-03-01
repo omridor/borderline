@@ -11,6 +11,7 @@ angular.module('borderlineApp').run(function(formlyConfig) {
           if(value) {
             return /^0[234578]\d{6}\d?\d?$/.test(value);
           }
+          return false;
         }  
       }
     }

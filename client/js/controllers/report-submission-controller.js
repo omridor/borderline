@@ -62,7 +62,10 @@ angular.module('borderlineApp').controller('ReportSubmissionController',['$scope
   ];
 
   $scope.submitReport = function() {
-    console.log('trying to submit...');
+    if ($scope.reportForm.$invalid) {
+      return;
+    }
+
     var report = new Report();
     report.dateOfIncident = $scope.report.dateOfIncident;
     report.severity = $scope.report.severity;
