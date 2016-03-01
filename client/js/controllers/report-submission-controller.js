@@ -11,7 +11,7 @@ angular.module('borderlineApp').controller('ReportSubmissionController',['$scope
     key: 'dateOfIncident',
     type: 'datepicker',
     templateOptions: {
-      label: 'Approximate Date of Incident',
+      label: 'Approximate Date of Uncomfortable Behavior',
       type: 'text',
       required: true,
       datepickerPopup: 'dd-MMMM-yyyy',
@@ -28,7 +28,7 @@ angular.module('borderlineApp').controller('ReportSubmissionController',['$scope
     key: 'severity',
     type: 'severitySelect',
     templateOptions: {
-      label: 'Severity of incident',
+      label: 'Severity of behavior',
       required: true,
     }
   },
@@ -37,7 +37,7 @@ angular.module('borderlineApp').controller('ReportSubmissionController',['$scope
     type: 'input',
     templateOptions: {
       type: 'text',
-      label: 'Offender\'s Name',
+      label: 'His Name',
       placeholder: 'Full Name',
       required: true
     }
@@ -47,7 +47,7 @@ angular.module('borderlineApp').controller('ReportSubmissionController',['$scope
     type: 'input',
     templateOptions: {
       type: 'email',
-      label: 'Offender\'s email address',
+      label: 'His Email Address',
       placeholder: 'Email',
     }
   },
@@ -55,7 +55,7 @@ angular.module('borderlineApp').controller('ReportSubmissionController',['$scope
     key: 'phoneNumber',
     type: 'phoneNumber',
     templateOptions: {
-      label: 'Offender\'s Phone Number',
+      label: 'His Phone Number',
       placeholder: 'Phone Number',
     }
   }
