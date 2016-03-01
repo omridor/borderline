@@ -21,6 +21,14 @@ function($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/home',
       templateUrl: '/dist/views/home.html'
     })
+    .state('faq', {
+      url: '/faq',
+      templateUrl: '/dist/views/faq.html'
+    })
+    .state('about', {
+      url: '/about',
+      templateUrl: '/dist/views/about.html'
+    })
     .state('done', {
       url: '/done',
       templateUrl: '/dist/views/done.html'
