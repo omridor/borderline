@@ -4,20 +4,26 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     reportsController = require('./server/controllers/reports-controller');
 
-mongoose.connect('mongodb://localhost:27017/wakeupcall');
+process.env.PWD = process.cwd();
+
+var dbURI = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/wakeupcall';
+console.log('About to connect to DB: ' + dbURI);
+mongoose.connect(dbURI);
+console.log('Connected to DB');
 
 app.use(bodyParser());
 app.get('/api/reports', reportsController.list);
 app.post('/api/reports', reportsController.create);
 
-app.use('/dist', express.static(__dirname + '/dist'));
-app.use('/lib', express.static(__dirname + '/bower_components'));
+app.use('/dist', express.static(process.env.PWD + '/dist'));
+app.use('/lib', express.static(process.env.PWD + '/bower_components'));
 
 app.get('*', function (req, res) {
-    res.sendfile(__dirname + '/dist/views/index.html');   
+    console.log('getting index.html');
+    res.sendfile(process.env.PWD + '/dist/views/index.html');   
 });
 
-
-app.listen(3000, function() {
-    console.log('listening');
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
+    console.log('listening on port ' + port);
 });
