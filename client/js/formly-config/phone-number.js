@@ -1,4 +1,6 @@
-app.run(function(formlyConfig) {  
+'use strict';
+
+angular.module('borderlineApp').run(function(formlyConfig) {  
   formlyConfig.setType({
     name: 'phoneNumber',
     extends:  'input',

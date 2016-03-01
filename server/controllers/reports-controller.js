@@ -1,3 +1,5 @@
+'use strict';
+
 var Report = require('../models/report').Report;
 
 module.exports.create = function (req, res) {

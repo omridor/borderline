@@ -1,5 +1,7 @@
-var app = angular.module('borderlineApp',['ngResource', 'ui.router', 'formly', 'formlyBootstrap', 'ui.bootstrap']);
-app.config([
+'use strict';
+
+angular.module('borderlineApp',['ngResource', 'ui.router', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'dialogs.main'])
+.config([
 '$stateProvider',
 '$urlRouterProvider',
 '$locationProvider',

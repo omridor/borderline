@@ -19,6 +19,7 @@ var gulp = require('gulp'),
     };  
   
 
+
 // jshint task
 gulp.task('jshint', function() {
   return gulp.src(paths.js.concat(paths.serverJs))
@@ -83,7 +84,7 @@ gulp.task('default', ['start', 'watch', 'lint']);
 gulp.task('start', ['browserify'], function () {
   nodemon({
     script: 'server.js',
-    watch: 'server',
+    watch: ['server', 'server.js'],
     ext: 'js html',
     env: { 'NODE_ENV': 'development' }
   }).on('restart', function () {
