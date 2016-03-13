@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('borderlineApp').controller('ReportSubmissionController',['$scope', '$resource', '$location', 'dialogs', function($scope, $resource, $location, dialogs) {
+angular.module('borderlineApp').controller('FormSubmissionController',['$scope', '$resource', '$location', 'dialogs', function($scope, $resource, $location, dialogs) {
   var Report = $resource('api/reports');
 
   // Empty object will be populated by form.
   $scope.report = {};
 
-  $scope.reportFields = [
+  $scope.incidentFields = [
   {
     key: 'dateOfIncident',
     type: 'datepicker',
@@ -41,7 +41,9 @@ angular.module('borderlineApp').controller('ReportSubmissionController',['$scope
       placeholder: 'Full Name',
       required: true
     }
-  },
+  }
+  ];
+  $scope.idFields = [
   {
     key: 'email',
     type: 'input',

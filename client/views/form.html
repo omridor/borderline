@@ -1,0 +1,15 @@
+<div class="page-header text-center">
+  <h2>Request an intervention</h1>
+  <!-- Form step navigation -->
+  <div class="text-center form-navigation">
+    <a ui-sref-active="active" ui-sref=".warning"><span></span></a>
+    <a ui-sref-active="active" ui-sref=".login"><span></span></a>
+    <a ui-sref-active="active" ui-sref=".incident"><span></span></a>
+    <a ui-sref-active="active" ui-sref=".ids"><span></span></a>
+    <a ui-sref-active="active" ui-sref=".confirm"><span></span></a>
+    <a ui-sref-active="active" ui-sref=".done"><span></span></a>
+  </div>
+</div>
+<form novalidate ng-submit="submitReport()" name="reportForm" class="report-form">
+  <div class="form-wizard-ui" ui-view></div>
+</form>
