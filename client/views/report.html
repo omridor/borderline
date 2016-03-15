@@ -1,0 +1,8 @@
+<div class="page-header">
+  <h1>Who made you uncomfortable?</h1>
+</div>
+<form novalidate ng-submit="submitReport()" name="reportForm">
+    <formly-form model="report" fields="reportFields" form="reportForm">
+        <button type="submit" class="btn btn-primary" ng-disabled="reportForm.$invalid">Submit Report</button>
+    </formly-form>
+</form>
