@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h1>Who made you uncomfortable?</h1>
+</div>
+<form novalidate name="vm.form">
+<wizard on-finish="vm.submitForm()"> 
+  <wz-step title="Step 1" canexit="vm.exitValidation(vm.forms.step1)">
+    <h2>Step 1</h2>
+    <formly-form model="vm.model" fields="vm.fields.step1" form="vm.forms.step1">
+      <div style="text-align:right">
+        <button type="submit" ng-disabled="vm.forms.step1.$invalid" wz-next class="btn btn-primary submit-button">Next</button>
+      </div>
+    </formly-form>
+  </wz-step>
+  <wz-step title="Step 2" canexit="vm.exitValidation(vm.forms.step2)">
+    <h2>Step 2</h2>
+    <formly-form model="vm.model" fields="vm.fields.step2" form="vm.forms.step2">
+      <div style="text-align:right">
+        <button type="submit" ng-disabled="vm.forms.step2.$invalid" wz-next class="btn btn-primary submit-button">Next</button>
+      </div>
+    </formly-form>
+  </wz-step>
+  <wz-step title="Confirm">
+    <h2>Confirm</h2>
+    <div style="text-align:right">
+      <button type="submit" ng-disabled="vm.form.$invalid" wz-finish class="btn btn-primary submit-button">Confirm</button>
+    </div>
+  </wz-step>
+</wizard>
+</form>

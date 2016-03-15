@@ -31,6 +31,7 @@
     "angular-formly": "7.3.9",
     "angular-bootstrap": "^1.2.1",
     "angular-dialog-service": "^5.3.0",
-    "angular-sanitize": "^1.5.0"
+    "angular-sanitize": "^1.5.0",
+    "angular-wizard": "^0.6.1"
   }
 }

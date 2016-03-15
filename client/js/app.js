@@ -1,16 +1,17 @@
 'use strict';
 
-angular.module('borderlineApp',['ngResource', 'ui.router', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'dialogs.main'])
+angular.module('borderlineApp',['ngResource', 'ui.router', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'dialogs.main', 'mgo-angular-wizard'])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
 '$locationProvider',
 function($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
-    .state('report', {
-      url: '/report',
-      templateUrl: '/dist/views/report.html',
-      controller: 'ReportSubmissionController'
+    .state('form', {
+      url: '/form',
+      templateUrl: '/dist/views/form.html',
+      controller: 'FormController',
+      controllerAs: 'vm'
     })
     .state('admin', {
       url: '/admin',
