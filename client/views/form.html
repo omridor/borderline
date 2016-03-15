@@ -3,27 +3,57 @@
 </div>
 <form novalidate name="vm.form">
 <wizard on-finish="vm.submitForm()"> 
-  <wz-step title="Step 1" canexit="vm.exitValidation(vm.forms.step1)">
-    <h2>Step 1</h2>
+
+  <wz-step title="Step 1" canexit="true">
+    <h2>Warning</h2>
+      Please Don't give false reports. We trust you.
+      <div style="text-align:right">
+        <button wz-next class="btn btn-danger submit-button">I promise</button>
+      </div>
+  </wz-step>
+
+  <wz-step title="Step 2" canexit="true">
+    <h2>Log in</h2>
+      Please log in via facebook
+      <div style="text-align:right">
+        <button wz-next class="btn btn-primary submit-button">Login</button>
+      </div>
+  </wz-step>
+
+  <wz-step title="Step 3" canexit="vm.exitValidation(vm.forms.step1)">
+    <h2>When did the incident(s) occur?</h2>
     <formly-form model="vm.model" fields="vm.fields.step1" form="vm.forms.step1">
       <div style="text-align:right">
         <button type="submit" ng-disabled="vm.forms.step1.$invalid" wz-next class="btn btn-primary submit-button">Next</button>
       </div>
     </formly-form>
   </wz-step>
-  <wz-step title="Step 2" canexit="vm.exitValidation(vm.forms.step2)">
-    <h2>Step 2</h2>
+
+  <wz-step title="Step 4" canexit="true">
+    <h2>Location of incidents</h2>
+      Where did they occur?
+      <div style="text-align:right">
+        <button wz-next class="btn btn-primary submit-button">Next</button>
+      </div>
+  </wz-step>
+
+
+  <wz-step title="Step 5" canexit="vm.exitValidation(vm.forms.step2)">
+    <h2>Ids of culprit</h2>
     <formly-form model="vm.model" fields="vm.fields.step2" form="vm.forms.step2">
       <div style="text-align:right">
         <button type="submit" ng-disabled="vm.forms.step2.$invalid" wz-next class="btn btn-primary submit-button">Next</button>
       </div>
     </formly-form>
   </wz-step>
-  <wz-step title="Confirm">
-    <h2>Confirm</h2>
+
+  <wz-step title="Step 6">
+    <h2>When should we contact the culprit?</h2>
+    bla bla bla
     <div style="text-align:right">
       <button type="submit" ng-disabled="vm.form.$invalid" wz-finish class="btn btn-primary submit-button">Confirm</button>
     </div>
   </wz-step>
+
 </wizard>
 </form>
