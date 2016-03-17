@@ -5,8 +5,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     passport = require('passport'),
     FacebookStrategy = require('passport-facebook').Strategy,
-    reportsController = require('./server/controllers/reports-controller'),
     User = require('./server/models/user'),
+    router = require('./server/router'),
     config = require('./config');
 
 console.log('About to connect to DB: ' + config.dbURI);
@@ -77,32 +77,7 @@ app.use(require('express-session')(config.expressSessionOptions));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-app.get('/api/reports', reportsController.list);
-app.post('/api/reports', reportsController.create);
-
-app.use('/dist', express.static(process.env.PWD + '/dist'));
-app.use('/lib', express.static(process.env.PWD + '/bower_components'));
-
-app.get('/login/facebook',
-  passport.authenticate('facebook'));
-
-app.get('/login/facebook/return', 
-  passport.authenticate('facebook', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/');
-  });
-
-// route for logging out
-app.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
-});
-
-app.get('*', function (req, res) {
-    res.render(process.env.PWD + '/dist/views/index.ejs',
-    	         {user: req.user});
-});
+app.use('/', router);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
