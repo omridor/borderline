@@ -45,6 +45,13 @@
             <li ng-class="{ active: isActive('/report')}"><a ui-sref="report">Submit Report</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li>
+            <% if (!user) { %>
+              <a href="/login/facebook" class="btn btn-default btn-sm" target="_self">Log In with Facebook</a>
+            <% } else { %>
+              <a href="/logout" class="btn btn-default btn-sm" target="_self">Logout, <%= user.facebook.name %>!</a>
+            <% } %>
+            </li>
             <li ng-class="{ active: isActive('/faq')}"><a ui-sref="faq">FAQ</a></li>
             <li ng-class="{ active: isActive('/about')}"><a ui-sref="about">About</a></li>
           </ul>

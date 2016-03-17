@@ -1,26 +1,107 @@
+'use strict';
+
 var express = require('express'),
     app     = express(),
     mongoose = require('mongoose'),
-    bodyParser = require('body-parser'),
-    reportsController = require('./server/controllers/reports-controller');
+    passport = require('passport'),
+    FacebookStrategy = require('passport-facebook').Strategy,
+    reportsController = require('./server/controllers/reports-controller'),
+    User = require('./server/models/user'),
+    config = require('./config');
 
-process.env.PWD = process.cwd();
-
-var dbURI = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/wakeupcall';
-console.log('About to connect to DB: ' + dbURI);
-mongoose.connect(dbURI);
+console.log('About to connect to DB: ' + config.dbURI);
+mongoose.connect(config.dbURI);
 console.log('Connected to DB');
 
-app.use(bodyParser());
+passport.use(new FacebookStrategy({
+    clientID: config.facebookAppId,
+    clientSecret: config.facebookAppSecret,
+    callbackURL: config.callbackUrl,
+    profileFields: ['id', 'email', 'name']
+  },
+  function(token, refreshToken, profile, done) {
+    process.nextTick(function() {
+        // find the user in the database based on their facebook id
+        User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
+          // if there is an error, stop everything and return that
+          // ie an error connecting to the database
+          if (err) {
+            return done(err);
+          }
+
+          // if the user is found, then log them in
+          if (user) {
+              return done(null, user); // user found, return that user
+          } else {
+            // if there is no user found with that facebook id, create them
+            var newUser            = new User();
+            // set all of the facebook information in our user model
+            newUser.facebook.id    = profile.id; // set the users facebook id                   
+            newUser.facebook.token = token; // we will save the token that facebook provides to the user                    
+            newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
+            newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
+
+            // save our user to the database
+            newUser.save(function(err) {
+              if (err) {
+                throw err;
+              }
+              // if successful, return the new user
+              return done(null, newUser);
+            });
+          }
+        });
+    });
+
+}));
+
+// used to serialize the user for the session
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
+// used to deserialize the user
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
+
+app.set('views', process.env.PWD + '/dist/views');
+app.set('view engine', 'ejs');
+
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('express-session')(config.expressSessionOptions));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 app.get('/api/reports', reportsController.list);
 app.post('/api/reports', reportsController.create);
 
 app.use('/dist', express.static(process.env.PWD + '/dist'));
 app.use('/lib', express.static(process.env.PWD + '/bower_components'));
 
+app.get('/login/facebook',
+  passport.authenticate('facebook'));
+
+app.get('/login/facebook/return', 
+  passport.authenticate('facebook', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+// route for logging out
+app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+});
+
 app.get('*', function (req, res) {
-    console.log('getting index.html');
-    res.sendfile(process.env.PWD + '/dist/views/index.html');   
+    res.render(process.env.PWD + '/dist/views/index.ejs',
+    	         {user: req.user});
 });
 
 var port = process.env.PORT || 3000;

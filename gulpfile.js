@@ -13,7 +13,8 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     paths = {
       js: ['client/js/**/*.js'],
-      html: ['client/views/**/*.html'],
+      html: ['client/views/**/*.html',
+             'client/views/**/*.ejs'],
       scss: ['client/scss/**/*.scss'],
       serverJs:['server/**/*.js']
     };  
@@ -84,7 +85,7 @@ gulp.task('default', ['start', 'watch', 'lint']);
 gulp.task('start', ['browserify'], function () {
   nodemon({
     script: 'server.js',
-    watch: ['server', 'server.js'],
+    watch: ['server', 'server.js', 'config.js'],
     ext: 'js html',
     env: { 'NODE_ENV': 'development' }
   }).on('restart', function () {

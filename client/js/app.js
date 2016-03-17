@@ -13,6 +13,14 @@ function($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'FormController',
       controllerAs: 'vm'
     })
+    .state('preFormLogin', {
+      url: '/login',
+      templateUrl: '/dist/views/preFormLogin.html'
+    })
+    .state('warning', {
+      url: '/warning',
+      templateUrl: '/dist/views/warning.html'
+    })
     .state('admin', {
       url: '/admin',
       templateUrl: '/dist/views/admin.html',
