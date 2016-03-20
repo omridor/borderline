@@ -19,7 +19,7 @@ router.get('/login/facebook/return',
   passport.authenticate('facebook', { failureRedirect: '/' }),
   function(req, res, next) {
   	if (req.session.returnToForm) {
-  		req.session.returnToForm = false;
+  		delete req.session.returnToForm;
   		res.redirect('/form');	
   	} else {
       res.redirect('/');
