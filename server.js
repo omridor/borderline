@@ -11,7 +11,7 @@ console.log('About to connect to DB: ' + config.dbURI);
 mongoose.connect(config.dbURI);
 console.log('Connected to DB');
 
-app.set('views', process.env.PWD + '/dist/views');
+app.set('views', process.env.PWD + '/dist/ejs/');
 app.set('view engine', 'ejs');
 
 app.use(require('cookie-parser')());

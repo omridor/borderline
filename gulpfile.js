@@ -13,15 +13,14 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     paths = {
       js: ['client/js/**/*.js'],
-      html: ['client/views/**/*.html',
-             'client/views/**/*.ejs'],
+      staticHtml: ['client/views/**/*.html'],
+      ejsTemplates: ['client/views/**/*.ejs'],
       scss: ['client/scss/**/*.scss'],
       serverJs:['server/**/*.js']
     };  
-  
 
 
-// jshint task
+// jshint
 gulp.task('jshint', function() {
   return gulp.src(paths.js.concat(paths.serverJs))
     .pipe(jshint('.jshintrc'))
@@ -35,7 +34,7 @@ gulp.task('build-css', function() {
     .pipe(sass().on('error', sass.logError))
     .pipe(concatCss('styles.css'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./dist/css'))
+    .pipe(gulp.dest('./dist/static/css'))
     .pipe(env === 'dev' ? livereload() : gutil.noop());
 });
 
@@ -45,10 +44,17 @@ gulp.task('scss-lint', function () {
     .pipe(scsslint());
 });
 
-// Copy html files to dist folder
+// Copy static html files to dist folder
 gulp.task('html', function() {
-  return gulp.src(paths.html)
-    .pipe(gulp.dest('./dist/views'))
+  return gulp.src(paths.staticHtml)
+    .pipe(gulp.dest('./dist/static/views'))
+    .pipe(env === 'dev' ? livereload() : gutil.noop());
+});
+
+// Copy ejs files to dist folder
+gulp.task('ejs', function() {
+  return gulp.src(paths.ejsTemplates)
+    .pipe(gulp.dest('./dist/ejs'))
     .pipe(env === 'dev' ? livereload() : gutil.noop());
 });
 
@@ -59,7 +65,7 @@ gulp.task('build-js', function() {
     .pipe(concat('bundle.js'))
     .pipe(env === 'prod' ? uglify() : gutil.noop()) 
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./dist/js'))
+    .pipe(gulp.dest('./dist/static/js'))
     .pipe(env === 'dev' ? livereload() : gutil.noop());
 });
 
@@ -73,7 +79,7 @@ gulp.task('watch', function() {
 });
 
 // browserify task is done when all client sources are available in dist.
-gulp.task('browserify', ['build-js', 'build-css', 'html']);
+gulp.task('browserify', ['build-js', 'build-css', 'html', 'ejs']);
 
 // browserify task is done when all client sources are available in dist.
 gulp.task('lint', ['scss-lint', 'jshint']);
@@ -86,7 +92,7 @@ gulp.task('start', ['browserify'], function () {
   nodemon({
     script: 'server.js',
     watch: ['server', 'server.js', 'config.js'],
-    ext: 'js html',
+    ext: 'js html ejs',
     env: { 'NODE_ENV': 'development' }
   }).on('restart', function () {
     console.log('restarted!')

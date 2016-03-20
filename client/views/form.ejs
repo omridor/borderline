@@ -1,7 +1,9 @@
-<div class="page-header">
+<% include ./partials/head %>
+<% include ./partials/header %>
+<div class="page-header" >
   <h1>Who made you uncomfortable?</h1>
 </div>
-<form novalidate name="vm.form">
+<form novalidate name="vm.form" ng-controller="FormController as vm">
 <wizard on-finish="vm.submitForm()">
 
   <wz-step title="Step 1" canexit="vm.exitValidation(vm.forms.step1)">
@@ -41,3 +43,4 @@
 
 </wizard>
 </form>
+<% include ./partials/footer %>
