@@ -13,7 +13,7 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     paths = {
       js: ['client/js/**/*.js'],
-      staticHtml: ['client/views/**/*.html'],
+      staticHtml: ['client/views/static/**/*.html'],
       ejsTemplates: ['client/views/**/*.ejs'],
       scss: ['client/scss/**/*.scss'],
       serverJs:['server/**/*.js']
@@ -76,6 +76,7 @@ gulp.task('watch', function() {
   gulp.watch(paths.serverJs, ['jshint']);
   gulp.watch(paths.scss, ['scss-lint', 'build-css']);
   gulp.watch(paths.html, ['html']);
+  gulp.watch(paths.html, ['ejs']);
 });
 
 // browserify task is done when all client sources are available in dist.
@@ -95,7 +96,7 @@ gulp.task('start', ['browserify'], function () {
     ext: 'js html ejs',
     env: { 'NODE_ENV': 'development' }
   }).on('restart', function () {
-    console.log('restarted!')
+    console.log('restarted!');
   });
 });
 
