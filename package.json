@@ -29,10 +29,11 @@
     "mongoose": "^4.4.5",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
-    "passport-facebook": "^2.1.0"
+    "passport-facebook": "^2.1.0",
+    "ruby": "^0.6.0"
   },
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "bower install && gem install bundler && bundle install",
     "start": "gulp start"
   },
   "devDependencies": {}
