@@ -9,11 +9,11 @@ var express = require('express'),
 router.get('/api/reports', reportsController.list);
 router.post('/api/reports', reportsController.create);
 
-router.use('/dist', express.static(process.env.PWD + '/dist/static'));
-router.use('/lib', express.static(process.env.PWD + '/bower_components'));
+router.use('/dist', express.static(process.cwd() + '/dist/static'));
+router.use('/lib', express.static(process.cwd() + '/bower_components'));
 
 router.get('/login/facebook',
-  passport.authenticate('facebook'));
+  passport.authenticate('facebook', {scope: ['email']}));
 
 router.get('/login/facebook/return',
   passport.authenticate('facebook', { failureRedirect: '/' }),
@@ -32,31 +32,31 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/', function (req, res) {
-    res.render(process.env.PWD + '/dist/ejs/index.ejs',
+    res.render(process.cwd() + '/dist/ejs/index.ejs',
     	         {user: req.user,
     	          activeNav: "home"});
 });
 
 router.get('/about', function (req, res) {
-    res.render(process.env.PWD + '/dist/ejs/about.ejs',
+    res.render(process.cwd() + '/dist/ejs/about.ejs',
     	         {user: req.user,
     	          activeNav: "about"});
 });
 
 router.get('/faq', function (req, res) {
-    res.render(process.env.PWD + '/dist/ejs/faq.ejs',
+    res.render(process.cwd() + '/dist/ejs/faq.ejs',
     	         {user: req.user,
     	          activeNav: "faq"});
 });
 
 router.get('/warning', function (req, res) {
-    res.render(process.env.PWD + '/dist/ejs/warning.ejs',
+    res.render(process.cwd() + '/dist/ejs/warning.ejs',
     	         {user: req.user,
     	          activeNav: "form"});
 });
 
 router.get('/preFormLogin', function (req, res) {
-    res.render(process.env.PWD + '/dist/ejs/preFormLogin.ejs',
+    res.render(process.cwd() + '/dist/ejs/preFormLogin.ejs',
     	         {user: req.user,
     	          activeNav: "form"});
 });
@@ -66,13 +66,7 @@ router.get('/form/login/facebook',
 		req.session.returnToForm = true;
 		next();
 	},
-  passport.authenticate('facebook'));
-
-router.get('/form/login/facebook/return', 
-  passport.authenticate('facebook', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/form');
-  });
+  passport.authenticate('facebook', {scope: ['email']}));
 
 function loggedIn(req, res, next) {
     if (req.user) {
@@ -85,7 +79,7 @@ function loggedIn(req, res, next) {
 router.get('/form', 
 	loggedIn,
 	function (req, res) {
-    res.render(process.env.PWD + '/dist/ejs/form.ejs',
+    res.render(process.cwd() + '/dist/ejs/form.ejs',
     	         {user: req.user,
     	          activeNav: "form"});
 });
