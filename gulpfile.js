@@ -8,8 +8,6 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     concatCss = require('gulp-concat-css'),
-    jshint = require('gulp-jshint'),
-    scsslint = require('gulp-scss-lint'),
     livereload = require('gulp-livereload'),
     paths = {
       js: ['client/js/**/*.js'],
@@ -18,14 +16,6 @@ var gulp = require('gulp'),
       scss: ['client/scss/**/*.scss'],
       serverJs:['server/**/*.js']
     };  
-
-
-// jshint
-gulp.task('jshint', function() {
-  return gulp.src(paths.js.concat(paths.serverJs))
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('jshint-stylish'));
-});
 
 // Build css
 gulp.task('build-css', function() {
@@ -36,12 +26,6 @@ gulp.task('build-css', function() {
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./dist/static/css'))
     .pipe(env === 'dev' ? livereload() : gutil.noop());
-});
-
-// scss lint
-gulp.task('scss-lint', function () {
-  return gulp.src(paths.scss)
-    .pipe(scsslint());
 });
 
 // Copy static html files to dist folder
@@ -72,9 +56,9 @@ gulp.task('build-js', function() {
 // Watch client sources, update dist folder. Browser will livereload.
 gulp.task('watch', function() {
   livereload.listen({interval:500});
-  gulp.watch(paths.js, ['jshint', 'build-js']);
+  gulp.watch(paths.js, ['build-js']);
   gulp.watch(paths.serverJs, ['jshint']);
-  gulp.watch(paths.scss, ['scss-lint', 'build-css']);
+  gulp.watch(paths.scss, ['build-css']);
   gulp.watch(paths.html, ['html']);
   gulp.watch(paths.html, ['ejs']);
 });
@@ -82,11 +66,8 @@ gulp.task('watch', function() {
 // browserify task is done when all client sources are available in dist.
 gulp.task('browserify', ['build-js', 'build-css', 'html', 'ejs']);
 
-// browserify task is done when all client sources are available in dist.
-gulp.task('lint', ['scss-lint', 'jshint']);
-
 // default task starts the server and watch.
-gulp.task('default', ['start', 'watch', 'lint']);
+gulp.task('default', ['start', 'watch']);
 
 // Server will restart if server code modified. 
 gulp.task('start', ['browserify'], function () {
