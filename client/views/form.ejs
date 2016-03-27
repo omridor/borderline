@@ -49,4 +49,21 @@
     </div>
   </div>
 </div>
+
+<!-- Angular template of error message -->
+<script type="text/ng-template" id="form-messages.html">
+  <formly-transclude></formly-transclude>
+
+  <div class="my-messages" ng-messages="fc.$error" ng-if="options.formControl.$touched">
+    <div class="some-message" ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">
+      <br/>
+      <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+          {{message(fc.$viewValue, fc.$modelValue, this)}}
+      </div>
+    </div>
+  </div>
+</script>
+
 <% include ./partials/footer %>

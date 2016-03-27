@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('borderlineApp').controller('FormController',['$scope', '$resource', '$location', 'dialogs', function($scope, $resource, $location, dialogs) {
+angular.module('borderlineApp').controller('FormController',['$scope', '$resource', '$window', 'dialogs', function($scope, $resource, $window, dialogs) {
   var Report = $resource('api/reports');
 
   // View model alias indicates what should be exposed in html.
@@ -45,7 +45,9 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
           type: 'text',
           label: 'His Name',
           placeholder: 'Full Name',
-          required: true
+          required: true,
+          minlength: 3,
+          maxlength: 64
         }
       }
     ],
@@ -93,7 +95,7 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
       if (!result) {
         dialogs.error('Could not connect to DB', 'Please try again in a few minutes');
       }
-      $location.path("done");
+      $window.location.href = '/done';
     });
   };
 }]);

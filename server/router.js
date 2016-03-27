@@ -61,6 +61,12 @@ router.get('/preFormLogin', function (req, res) {
     	          activeNav: "form"});
 });
 
+router.get('/done', function (req, res) {
+    res.render(process.cwd() + '/dist/ejs/done.ejs',
+               {user: req.user,
+                activeNav: "form"});
+});
+
 router.get('/form/login/facebook',
 	function(req, res, next) {
 		req.session.returnToForm = true;
