@@ -67,7 +67,7 @@ router.get('/done', function (req, res) {
                 activeNav: "form"});
 });
 
-router.get('/form/login/facebook',
+router.get('/login/facebook/returntoform',
 	function(req, res, next) {
 		req.session.returnToForm = true;
 		next();
@@ -82,7 +82,7 @@ function loggedIn(req, res, next) {
     }
 }
 
-router.get('/form', 
+router.get('/form*', 
 	loggedIn,
 	function (req, res) {
     res.render(process.cwd() + '/dist/ejs/form.ejs',

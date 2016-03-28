@@ -2,50 +2,8 @@
 <% include ./partials/header %>
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2 col-xs-12">
-      <div class="page-header" >
-        <h1>Who made you uncomfortable?</h1>
-      </div>
-      <form novalidate name="vm.form" ng-controller="FormController as vm">
-      <wizard on-finish="vm.submitForm()">
-
-        <wz-step title="Step 1" canexit="vm.exitValidation(vm.forms.step1)">
-          <h2>When did the incident(s) occur?</h2>
-          <formly-form model="vm.model" fields="vm.fields.step1" form="vm.forms.step1">
-            <div style="text-align:right">
-              <button type="submit" ng-disabled="vm.forms.step1.$invalid" wz-next class="btn btn-primary submit-button">Next</button>
-            </div>
-          </formly-form>
-        </wz-step>
-
-        <wz-step title="Step 2" canexit="true">
-          <h2>Location of incidents</h2>
-            Where did they occur?
-            <div style="text-align:right">
-              <button wz-next class="btn btn-primary submit-button">Next</button>
-            </div>
-        </wz-step>
-
-
-        <wz-step title="Step 3" canexit="vm.exitValidation(vm.forms.step2)">
-          <h2>Ids of culprit</h2>
-          <formly-form model="vm.model" fields="vm.fields.step2" form="vm.forms.step2">
-            <div style="text-align:right">
-              <button type="submit" ng-disabled="vm.forms.step2.$invalid" wz-next class="btn btn-primary submit-button">Next</button>
-            </div>
-          </formly-form>
-        </wz-step>
-
-        <wz-step title="Step 4">
-          <h2>When should we contact the culprit?</h2>
-          bla bla bla
-          <div style="text-align:right">
-            <button type="submit" ng-disabled="vm.form.$invalid" wz-finish class="btn btn-primary submit-button">Confirm</button>
-          </div>
-        </wz-step>
-
-      </wizard>
-      </form>
+    <div class="col-md-8 col-md-offset-2 col-xs-12" ng-controller="FormController as vm">
+      <div ui-view></div>
     </div>
   </div>
 </div>
@@ -65,5 +23,57 @@
     </div>
   </div>
 </script>
+
+<!-- Angular templates for form steps -->
+<script type="text/ng-template" id="form-general.html">
+  <h2>When did the incident(s) occur?</h2>
+  <form novalidate name="vm.steps[0].form">
+    <formly-form model="vm.model" fields="vm.steps[0].fields" form="vm.steps[0].form">
+      <div style="text-align:right">
+        <button ui-sref="location" type="submit" ng-disabled="vm.steps[0].form.$invalid" class="btn btn-primary submit-button">Next</button>
+      </div>
+    </formly-form>
+  </form>
+</script>
+
+<script type="text/ng-template" id="form-location.html">
+  <h2>Location of incidents?</h2>
+  Where did they occur?
+  <div style="text-align:right">
+    <button ui-sref="ids" class="btn btn-primary submit-button">Next</button>
+  </div>
+</script>
+
+<script type="text/ng-template" id="form-ids.html">
+  <h2>Ids of culprit</h2>
+  <form novalidate name="vm.steps[2].form">
+    <formly-form model="vm.model" fields="vm.steps[2].fields" form="vm.steps[2].form">
+      <div style="text-align:right">
+        <button ui-sref="confirm" type="submit" ng-disabled="vm.steps[2].form.$invalid" class="btn btn-primary submit-button">Next</button>
+      </div>
+    </formly-form>
+  </form>
+</script>
+
+<script type="text/ng-template" id="form-confirm.html">
+  <h2>When should we contact the culprit?</h2>
+  bla bla bla
+  <div style="text-align:right">
+    <button ng-click="vm.submitReport()" class="btn btn-primary submit-button">Confirm</button>
+  </div>
+</script>
+
+<script type="text/ng-template" id="form-done.html">
+  <div class="jumbotron text-center">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Thank You</h2>
+        <p class="text-left">Your report has been saved, and we will act upon it if more reports are received on the same offender.</p>
+        <a href="/form" target="_self" class="btn btn-primary">Submit another report</a>
+      </div>
+    </div>
+  </div
+</script>
+
 
 <% include ./partials/footer %>

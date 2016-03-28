@@ -15,7 +15,7 @@ app.set('views', process.cwd() + '/dist/ejs/');
 app.set('view engine', 'ejs');
 
 app.use(require('cookie-parser')());
-app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('body-parser')());
 app.use(require('express-session')(config.expressSessionOptions));
 
 app.use(passport.initialize());

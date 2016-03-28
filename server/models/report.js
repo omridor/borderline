@@ -13,6 +13,6 @@ module.exports.idTypes = {
 module.exports.Report = mongoose.model('Report', {
   submittedOn: { type: Date, default: Date.now, required: true},
   dateOfIncident: {type: Date, required: true},
-  severity: {type: String, require: true},
+  severity: {type: String, required: true},
   ids: [{idType: String, value: String}]
 });
