@@ -1,0 +1,54 @@
+$nav-font-color: #000;
+$nav-span-unvisited-bg: #888;
+$nav-span-active-bg: #111;
+$nav-span-invalid-bg: #d88;
+$nav-span-valid-bg: #8d8;
+$nav-span-hover-bonus: #222;
+
+.form-nav a {
+  color: $nav-font-color;
+  display: inline-block;
+  font-size: 12px;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 80px;
+}
+
+.form-nav span {
+  background: $nav-span-unvisited-bg;
+  border-radius: 50%;
+  display: block;
+  height: 30px;
+  margin: 0 auto 5px;
+  padding-top: 5px;
+  width: 30px;
+
+  &.active {
+    background: $nav-span-active-bg;
+  }
+
+  &.invalid {
+    background: $nav-span-invalid-bg;
+  }
+
+  &.valid {
+    background: $nav-span-valid-bg;
+  }
+}
+
+.form-nav a:hover span {
+  background: $nav-span-unvisited-bg + $nav-span-hover-bonus;
+
+  &.active {
+    background: $nav-span-active-bg + $nav-span-hover-bonus;
+  }
+
+  &.invalid {
+    background: $nav-span-invalid-bg + $nav-span-hover-bonus;
+  }
+
+  &.valid {
+    background: $nav-span-valid-bg + $nav-span-hover-bonus;
+  }
+}
