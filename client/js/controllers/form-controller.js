@@ -6,6 +6,10 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
   // View model alias indicates what should be exposed in html.
   var vm = this;
 
+  window.onbeforeunload = function(){
+      return 'You have unsaved data.';
+  };
+
   // Defines form step order, their state names (for ui-router navigation), their fields (for formly form generation) and valid/visited flags. The valid flag
   // retains the last known state of the step right before we navigated away from it.
   vm.steps = [
@@ -180,6 +184,7 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
       if (!result) {
         dialogs.error('Could not connect to DB', 'Please try again in a few minutes');
       }
+      window.onbeforeunload = null;
       $location.path('/done');
     }, function(err){
         dialogs.error('Server error', JSON.stringify(err));
