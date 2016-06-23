@@ -27,6 +27,22 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
             type: 'text',
             required: true
           }
+        },
+        {
+          key: 'frequencyNumerator',
+          type: 'input',
+          templateOptions: {
+            label: 'Frequency of incidents',
+            type: 'number',
+            required: true
+          }
+        },
+        {
+          key: 'frequencyDenominator',
+          type: 'frequencySelect',
+          templateOptions: {
+            required: true,
+          }
         }
       ]
     },
@@ -108,6 +124,11 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
     var fromStepIndex = vm.findStepIndexByStateName(fromState.name);
     if (fromStepIndex > -1) {
       vm.saveValidityOfStep(fromStepIndex);
+    }
+
+    // Hack to check validity of When step.
+    if (vm.model && vm.model.months && !vm.model.months.length) {
+      vm.steps[vm.findStepIndexByStateName('when')].valid = false;
     }
 
     // Mark all previous steps as visited, even if they were skipped.

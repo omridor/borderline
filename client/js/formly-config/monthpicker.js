@@ -21,7 +21,9 @@ angular.module('borderlineApp').run(function(formlyConfig) {
         $scope.model[$scope.options.key] = [];
       };
 
-      $scope.model[$scope.options.key] = [];
+      if (!$scope.model[$scope.options.key]) {
+        $scope.model[$scope.options.key] = [];
+      }
     }]
   });
 });

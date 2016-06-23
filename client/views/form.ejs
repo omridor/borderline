@@ -37,7 +37,7 @@
   <form novalidate name="vm.steps[0].form">
     <formly-form model="vm.model" fields="vm.steps[0].fields" form="vm.steps[0].form">
       <div style="text-align:right">
-        <button ui-sref="where" type="submit" ng-disabled="vm.steps[0].form.$invalid" class="btn btn-primary submit-button">Next</button>
+        <button ui-sref="where" type="submit" ng-disabled="vm.steps[0].form.$invalid || !vm.model.months.length" class="btn btn-primary submit-button">Next</button>
       </div>
     </formly-form>
   </form>
