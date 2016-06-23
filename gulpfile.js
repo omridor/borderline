@@ -58,7 +58,7 @@ gulp.task('watch', function() {
   livereload.listen({interval:500});
   gulp.watch(paths.js, ['build-js']);
   gulp.watch(paths.scss, ['build-css']);
-  gulp.watch(paths.html, ['html']);
+  gulp.watch(paths.staticHtml, ['html']);
   gulp.watch(paths.ejsTemplates, ['ejs']);
 });
 

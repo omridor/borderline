@@ -50,8 +50,6 @@ angular.module('borderlineApp').run(function(formlyConfig) {
       ngModelAttrs: ngModelAttrs,
       templateOptions: {
         datepickerOptions: {
-          format: 'MM.dd.yyyy',
-          initDate: new Date()
         }
       }
     },

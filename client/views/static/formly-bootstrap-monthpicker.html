@@ -1,0 +1,10 @@
+
+  <uib-datepicker type="text"
+                  id="{{::id}}"
+                  name="{{::id}}"s
+                  ng-model="activeDate"
+                  multi-select="model[options.key]"
+                  template-url="dist/views/multi-datepicker.tpl.html"
+                  datepicker-options="to"></uib-datepicker>
+  <br/>
+  <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>

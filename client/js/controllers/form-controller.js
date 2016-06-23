@@ -20,20 +20,12 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
       visited: false,
       fields: [
         {
-          key: 'dateOfIncident',
-          type: 'datepicker',
+          key: 'months',
+          type: 'monthpicker',
           templateOptions: {
-            label: 'Approximate Date of Uncomfortable Behavior',
+            label: 'Months when incidents have occured',
             type: 'text',
-            required: true,
-            datepickerPopup: 'dd-MMMM-yyyy',
-            datepickerOptions: {
-              datepickerMode: "year",
-              maxDate: new Date(),
-              minDate: new Date().setYear(new Date().getYear()-50),
-              showWeeks: false,
-              format: 'dd-MMMM-yyyy'
-            }
+            required: true
           }
         },
         {

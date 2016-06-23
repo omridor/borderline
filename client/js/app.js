@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('borderlineApp',['ngResource', 'ui.router', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'dialogs.main', 'ngMessages'])
+angular.module('borderlineApp',['ngResource', 'ui.router', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'dialogs.main', 'ngMessages', 'gm.datepickerMultiSelect'])
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
   // UI router is nested in /form, so all following states are in path /form/**  

@@ -2,7 +2,8 @@
 <input  type="text"
         id="{{::id}}"
         name="{{::id}}"
-        ng-model="model[options.key]"
+        ng-model='selectedDates'
+        multi-select='model[options.key]'
         class="form-control"
         ng-click="datepicker.open($event)"
         uib-datepicker-popup="{{to.datepickerOptions.format}}"

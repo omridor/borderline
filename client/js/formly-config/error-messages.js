@@ -3,7 +3,7 @@
 angular.module('borderlineApp').run(function(formlyConfig, formlyValidationMessages, formlyApiCheck) {
 	formlyConfig.setWrapper({
 	  name: 'validation',
-	  types: ['input', 'phoneNumber', 'severitySelect', 'datepicker'],
+	  types: ['input', 'phoneNumber', 'severitySelect', 'datepicker', 'monthpicker'],
 	  templateUrl: 'form-messages.html'
 	});
 
@@ -12,4 +12,5 @@ angular.module('borderlineApp').run(function(formlyConfig, formlyValidationMessa
   formlyValidationMessages.addStringMessage('maxlength', 'Too long');
   formlyValidationMessages.addStringMessage('email', 'Not a valid email address');
   formlyValidationMessages.addStringMessage('phoneNumber', 'Not a valid phone number');
+  formlyValidationMessages.addStringMessage('oneMonthAtLeast', 'You must select at least one month');
 });
