@@ -27,26 +27,6 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
             type: 'text',
             required: true
           }
-        },
-        {
-          key: 'severity',
-          type: 'severitySelect',
-          templateOptions: {
-            label: 'Severity of behavior',
-            required: true,
-          }
-        },
-        {
-          key: 'name',
-          type: 'input',
-          templateOptions: {
-            type: 'text',
-            label: 'His Name',
-            placeholder: 'Full Name',
-            required: true,
-            minlength: 3,
-            maxlength: 64
-          }
         }
       ]
     },
@@ -62,7 +42,16 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
       stepDisplayName: 'What',
       valid: false,
       visited: false,
-      fields: []
+      fields: [
+        {
+          key: 'severity',
+          type: 'severitySelect',
+          templateOptions: {
+            label: 'Severity of behavior',
+            required: true,
+          }
+        }
+      ]
     },
     {
       stepName: 'who',
@@ -85,6 +74,18 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
           templateOptions: {
             label: 'His Phone Number',
             placeholder: 'Phone Number',
+          }
+        },
+        {
+          key: 'name',
+          type: 'input',
+          templateOptions: {
+            type: 'text',
+            label: 'His Name',
+            placeholder: 'Full Name',
+            required: true,
+            minlength: 3,
+            maxlength: 64
           }
         }
       ]

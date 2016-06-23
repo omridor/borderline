@@ -52,9 +52,13 @@
 
 <script type="text/ng-template" id="form-what.html">
   <h2>What happened?</h2>
-  <div style="text-align:right">
-    <button ui-sref="who" class="btn btn-primary submit-button">Next</button>
-  </div>
+  <form novalidate name="vm.steps[2].form">
+    <formly-form model="vm.model" fields="vm.steps[2].fields" form="vm.steps[2].form">
+      <div style="text-align:right">
+        <button ui-sref="where" type="submit" ng-disabled="vm.steps[2].form.$invalid" class="btn btn-primary submit-button">Next</button>
+      </div>
+    </formly-form>
+  </form>
 </script>
 
 <script type="text/ng-template" id="form-who.html">
