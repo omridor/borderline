@@ -45,9 +45,13 @@
 
 <script type="text/ng-template" id="form-where.html">
   <h2>Location of incidents?</h2>
-  <div style="text-align:right">
-    <button ui-sref="what" class="btn btn-primary submit-button">Next</button>
-  </div>
+  <form novalidate name="vm.steps[1].form">
+    <formly-form model="vm.model" fields="vm.steps[1].fields" form="vm.steps[1].form">
+      <div style="text-align:right">
+        <button ui-sref="what" type="submit" ng-disabled="vm.steps[1].form.$invalid" class="btn btn-primary submit-button">Next</button>
+      </div>
+    </formly-form>
+  </form>
 </script>
 
 <script type="text/ng-template" id="form-what.html">
@@ -55,7 +59,7 @@
   <form novalidate name="vm.steps[2].form">
     <formly-form model="vm.model" fields="vm.steps[2].fields" form="vm.steps[2].form">
       <div style="text-align:right">
-        <button ui-sref="where" type="submit" ng-disabled="vm.steps[2].form.$invalid" class="btn btn-primary submit-button">Next</button>
+        <button ui-sref="who" type="submit" ng-disabled="vm.steps[2].form.$invalid" class="btn btn-primary submit-button">Next</button>
       </div>
     </formly-form>
   </form>

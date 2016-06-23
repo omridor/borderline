@@ -51,7 +51,16 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
       stepDisplayName: 'Where',
       valid: false,
       visited: false,
-      fields: []
+      fields: [
+        {
+          key: 'country',
+          type: 'countrySelect',
+          templateOptions: {
+            label: 'Country where most incidents occured',
+            required: true,
+          }
+        }
+      ]
     },
     {
       stepName: 'what',
