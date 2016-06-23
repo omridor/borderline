@@ -5,24 +5,29 @@ angular.module('borderlineApp',['ngResource', 'ui.router', 'formly', 'formlyBoot
 
   // UI router is nested in /form, so all following states are in path /form/**  
   $stateProvider
-    .state('general', {
-      url: '/general',
-      templateUrl: 'form-general.html'
+    .state('when', {
+      url: '/when',
+      templateUrl: 'form-when.html'
     })
 
-    .state('location', {
-      url: '/location',
-      templateUrl: 'form-location.html'
+    .state('where', {
+      url: '/where',
+      templateUrl: 'form-where.html'
     })
     
-    .state('ids', {
-      url: '/ids',
-      templateUrl: 'form-ids.html'
+    .state('what', {
+      url: '/what',
+      templateUrl: 'form-what.html'
     })
 
-    .state('confirm', {
-      url: '/confirm',
-      templateUrl: 'form-confirm.html'
+    .state('who', {
+      url: '/who',
+      templateUrl: 'form-who.html'
+    })
+
+    .state('how', {
+      url: '/how',
+      templateUrl: 'form-how.html'
     })
 
     .state('done', {
@@ -31,6 +36,6 @@ angular.module('borderlineApp',['ngResource', 'ui.router', 'formly', 'formlyBoot
     });
 
 
-  // Start in step 1 - 'general'  
-  $urlRouterProvider.otherwise('general');
+  // Start in step 1 - 'when'  
+  $urlRouterProvider.otherwise('when');
 });

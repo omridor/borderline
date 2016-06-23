@@ -31,38 +31,44 @@
 </script>
 
 <!-- Angular templates for form steps -->
-<script type="text/ng-template" id="form-general.html">
+<script type="text/ng-template" id="form-when.html">
   <h2>When did the incident(s) occur?</h2>
 
   <form novalidate name="vm.steps[0].form">
     <formly-form model="vm.model" fields="vm.steps[0].fields" form="vm.steps[0].form">
       <div style="text-align:right">
-        <button ui-sref="location" type="submit" ng-disabled="vm.steps[0].form.$invalid" class="btn btn-primary submit-button">Next</button>
+        <button ui-sref="where" type="submit" ng-disabled="vm.steps[0].form.$invalid" class="btn btn-primary submit-button">Next</button>
       </div>
     </formly-form>
   </form>
 </script>
 
-<script type="text/ng-template" id="form-location.html">
+<script type="text/ng-template" id="form-where.html">
   <h2>Location of incidents?</h2>
-  Where did they occur?
   <div style="text-align:right">
-    <button ui-sref="ids" class="btn btn-primary submit-button">Next</button>
+    <button ui-sref="what" class="btn btn-primary submit-button">Next</button>
   </div>
 </script>
 
-<script type="text/ng-template" id="form-ids.html">
+<script type="text/ng-template" id="form-what.html">
+  <h2>What happened?</h2>
+  <div style="text-align:right">
+    <button ui-sref="who" class="btn btn-primary submit-button">Next</button>
+  </div>
+</script>
+
+<script type="text/ng-template" id="form-who.html">
   <h2>Ids of culprit</h2>
-  <form novalidate name="vm.steps[2].form">
-    <formly-form model="vm.model" fields="vm.steps[2].fields" form="vm.steps[2].form">
+  <form novalidate name="vm.steps[3].form">
+    <formly-form model="vm.model" fields="vm.steps[3].fields" form="vm.steps[3].form">
       <div style="text-align:right">
-        <button ui-sref="confirm" type="submit" ng-disabled="vm.steps[2].form.$invalid" class="btn btn-primary submit-button">Next</button>
+        <button ui-sref="how" type="submit" ng-disabled="vm.steps[3].form.$invalid" class="btn btn-primary submit-button">Next</button>
       </div>
     </formly-form>
   </form>
 </script>
 
-<script type="text/ng-template" id="form-confirm.html">
+<script type="text/ng-template" id="form-how.html">
   <h2>When should we contact the culprit?</h2>
   bla bla bla
   <div style="text-align:right">

@@ -14,8 +14,8 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
   // retains the last known state of the step right before we navigated away from it.
   vm.steps = [
     {
-      stepName: 'general',
-      stepDisplayName: 'General',
+      stepName: 'when',
+      stepDisplayName: 'When',
       valid: false,
       visited: false,
       fields: [
@@ -23,7 +23,7 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
           key: 'months',
           type: 'monthpicker',
           templateOptions: {
-            label: 'Months when incidents have occured',
+            label: 'Months when incidents occured',
             type: 'text',
             required: true
           }
@@ -51,15 +51,22 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
       ]
     },
     {
-      stepName: 'location',
-      stepDisplayName: 'Location',
+      stepName: 'where',
+      stepDisplayName: 'Where',
       valid: false,
       visited: false,
       fields: []
     },
     {
-      stepName: 'ids',
-      stepDisplayName: 'IDs',
+      stepName: 'what',
+      stepDisplayName: 'What',
+      valid: false,
+      visited: false,
+      fields: []
+    },
+    {
+      stepName: 'who',
+      stepDisplayName: 'Who',
       valid: false,
       visited: false,
       fields: [
@@ -83,13 +90,12 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
       ]
     },
     {
-      stepName: 'confirm',
-      stepDisplayName: 'Confirm',
+      stepName: 'how',
+      stepDisplayName: 'How',
       valid: false,
       visited: false,
       fields: []
-    },
-
+    }
   ];
 
   // Set flags on out-of-DOM form steps.
