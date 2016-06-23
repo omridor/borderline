@@ -69,12 +69,26 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
       visited: false,
       fields: [
         {
+          key: 'relationship',
+          type: 'relationshipSelect',
+          templateOptions: {
+            label: 'Who is this person to you?',
+            required: true
+          }
+        },
+        {
           key: 'severity',
           type: 'severitySelect',
           templateOptions: {
             label: 'Severity of behavior',
-            required: true,
+            required: true
           }
+        },
+        {
+          key: 'behaviors',
+          type: 'behaviorCheckList',
+          templateOptions: {
+            label: 'What did this person do?'          }
         }
       ]
     },
@@ -89,7 +103,7 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
           type: 'input',
           templateOptions: {
             type: 'email',
-            label: 'His Email Address',
+            label: 'The person\'s Email Address. The message will be sent here!',
             placeholder: 'Email',
           }
         },
@@ -97,20 +111,8 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
           key: 'phoneNumber',
           type: 'phoneNumber',
           templateOptions: {
-            label: 'His Phone Number',
+            label: 'Phone Number. If we receive other reports with this number, we will know they relate to the same person, even if the email is different',
             placeholder: 'Phone Number',
-          }
-        },
-        {
-          key: 'name',
-          type: 'input',
-          templateOptions: {
-            type: 'text',
-            label: 'His Name',
-            placeholder: 'Full Name',
-            required: true,
-            minlength: 3,
-            maxlength: 64
           }
         }
       ]
