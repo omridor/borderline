@@ -37,5 +37,5 @@ angular.module('borderlineApp',['ngResource', 'ui.router', 'formly', 'formlyBoot
 
 
   // Start in step 1 - 'when'  
-  $urlRouterProvider.otherwise('when');
+  $urlRouterProvider.otherwise('what');
 });
