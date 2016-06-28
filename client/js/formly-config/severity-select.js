@@ -28,7 +28,10 @@ angular.module('borderlineApp').run(function(formlyConfig) {
   formlyConfig.setType({
     name: 'severitySelect',
     extends: 'select',
-    template: '<select class="form-control" ng-model="model[options.key]"></select><p>{{getVerboseDescription()}}</p>',
+    template:
+      '<select class="form-control" ng-model="model[options.key]"></select>' +
+      '<div class="well" ng-show="getVerboseDescription()">{{getVerboseDescription()}}</div>'
+    ,
     defaultOptions: {
       templateOptions: {
         options: severityLevels

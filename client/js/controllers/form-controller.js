@@ -31,7 +31,8 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
           key: 'behaviors',
           type: 'behaviorCheckList',
           templateOptions: {
-            label: 'What did this person do?'          }
+            label: 'Specific behaviors'
+          }
         }
       ]
     },
