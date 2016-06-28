@@ -30,7 +30,7 @@ angular.module('borderlineApp').run(function(formlyConfig) {
     extends: 'select',
     template:
       '<select class="form-control" ng-model="model[options.key]"></select>' +
-      '<div class="well" ng-show="getVerboseDescription()">{{getVerboseDescription()}}</div>'
+      '<div class="well well-sm" ng-show="getVerboseDescription()">{{getVerboseDescription()}}</div>'
     ,
     defaultOptions: {
       templateOptions: {

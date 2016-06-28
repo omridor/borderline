@@ -33,6 +33,23 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
           templateOptions: {
             label: 'Specific behaviors'
           }
+        },
+        {
+          key: 'shouldIncludeBehaviors',
+          type: 'radio',
+          templateOptions: {
+            label: 'Would you like the person in question to know about the behaviors that bothered you?',
+            options: [
+              {
+                "name": "Include list of specific behaviors in the message sent to the person in question",
+                "value": "include"
+              },
+              {
+                "name": "Only use the specific behaviors for research and statistics",
+                "value": "dontinclude"
+              }
+            ]
+          }
         }
       ]
     },
