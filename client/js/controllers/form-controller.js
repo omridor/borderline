@@ -38,6 +38,7 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
           key: 'shouldIncludeBehaviors',
           type: 'radio',
           templateOptions: {
+            required: true,
             label: 'Would you like the person in question to know about the behaviors that bothered you?',
             options: [
               {
