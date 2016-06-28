@@ -61,13 +61,23 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
       visited: false,
       fields: [
         {
+          key: 'email',
+          type: 'input',
+          templateOptions: {
+            required: true,
+            type: 'email',
+            label: 'Please provide the person in question\'s private email address. The message will be sent here',
+            placeholder: 'Email',
+          }
+        },
+        {
           key: 'whenToSend',
-          type:  'select',
+          type: 'radio',
           templateOptions: {
             required: true,
             options: [
-              {value: "unconditional", name: "Send the message within the next 24 hours"},
-              {value: "conditional", name: "Wait until the person in question gets at least one other message before sending mine. I don't want to be the first to send a message to the person in question"}
+              {value: "unconditional", name: "I want the message to be sent as soon as possible"},
+              {value: "conditional", name: "If I'm the only person to report the person in question, I don't want the message to be sent at all. I understand that I will never be able to tell whether the message was eventually sent or not."}
             ]
           }
         }
@@ -134,15 +144,6 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
           templateOptions: {
             label: 'Who is this person to you?',
             required: true
-          }
-        },
-        {
-          key: 'email',
-          type: 'input',
-          templateOptions: {
-            type: 'email',
-            label: 'The person\'s Email Address. The message will be sent here!',
-            placeholder: 'Email',
           }
         },
         {
