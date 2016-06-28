@@ -77,11 +77,14 @@
 </script>
 
 <script type="text/ng-template" id="form-how.html">
-  <h2>When should we contact the culprit?</h2>
-  bla bla bla
-  <div style="text-align:right">
-    <button ng-click="vm.submitReport()" class="btn btn-primary submit-button">Confirm</button>
-  </div>
+  <h2>How should we contact the person in question?</h2>
+  <form novalidate name="vm.steps[4].form">
+    <formly-form model="vm.model" fields="vm.steps[4].fields" form="vm.steps[4].form">
+      <div style="text-align:right">
+        <button ui-sref="how" type="submit" ng-disabled="vm.steps[4].form.$invalid" class="btn btn-primary submit-button">Next</button>
+      </div>
+    </formly-form>
+  </form>
 </script>
 
 <script type="text/ng-template" id="form-done.html">

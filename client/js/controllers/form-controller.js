@@ -122,7 +122,19 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
       stepDisplayName: 'How',
       valid: false,
       visited: false,
-      fields: []
+      fields: [
+        {
+          key: 'whenToSend',
+          type:  'select',
+          templateOptions: {
+            required: true,
+            options: [
+              {value: "unconditional", name: "Send the message within the next 24 hours"},
+              {value: "conditional", name: "Wait until the person in question gets at least one other message before sending mine. I don't want to be the first to send a message to the person in question"}
+            ]
+          }
+        }
+      ]
     }
   ];
 
