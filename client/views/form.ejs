@@ -31,46 +31,12 @@
 </script>
 
 <!-- Angular templates for form steps -->
-<script type="text/ng-template" id="form-when.html">
-  <h2>When did the incident(s) occur?</h2>
-
+<script type="text/ng-template" id="form-what.html">
+  <h2>What happened?</h2>
   <form novalidate name="vm.steps[0].form">
     <formly-form model="vm.model" fields="vm.steps[0].fields" form="vm.steps[0].form">
       <div style="text-align:right">
-        <button ui-sref="where" type="submit" ng-disabled="vm.steps[0].form.$invalid || !vm.model.months.length" class="btn btn-primary submit-button">Next</button>
-      </div>
-    </formly-form>
-  </form>
-</script>
-
-<script type="text/ng-template" id="form-where.html">
-  <h2>Location of incidents?</h2>
-  <form novalidate name="vm.steps[1].form">
-    <formly-form model="vm.model" fields="vm.steps[1].fields" form="vm.steps[1].form">
-      <div style="text-align:right">
-        <button ui-sref="what" type="submit" ng-disabled="vm.steps[1].form.$invalid" class="btn btn-primary submit-button">Next</button>
-      </div>
-    </formly-form>
-  </form>
-</script>
-
-<script type="text/ng-template" id="form-what.html">
-  <h2>What happened?</h2>
-  <form novalidate name="vm.steps[2].form">
-    <formly-form model="vm.model" fields="vm.steps[2].fields" form="vm.steps[2].form">
-      <div style="text-align:right">
-        <button ui-sref="who" type="submit" ng-disabled="vm.steps[2].form.$invalid" class="btn btn-primary submit-button">Next</button>
-      </div>
-    </formly-form>
-  </form>
-</script>
-
-<script type="text/ng-template" id="form-who.html">
-  <h2>Ids of culprit</h2>
-  <form novalidate name="vm.steps[3].form">
-    <formly-form model="vm.model" fields="vm.steps[3].fields" form="vm.steps[3].form">
-      <div style="text-align:right">
-        <button ui-sref="how" type="submit" ng-disabled="vm.steps[3].form.$invalid" class="btn btn-primary submit-button">Next</button>
+        <button ui-sref="how" type="submit" ng-disabled="vm.steps[0].form.$invalid" class="btn btn-primary submit-button">Next</button>
       </div>
     </formly-form>
   </form>
@@ -78,10 +44,44 @@
 
 <script type="text/ng-template" id="form-how.html">
   <h2>How should we contact the person in question?</h2>
+  <form novalidate name="vm.steps[1].form">
+    <formly-form model="vm.model" fields="vm.steps[1].fields" form="vm.steps[1].form">
+      <div style="text-align:right">
+        <button ui-sref="when" type="submit" ng-disabled="vm.steps[1].form.$invalid" class="btn btn-primary submit-button">Next</button>
+      </div>
+    </formly-form>
+  </form>
+</script>
+
+<script type="text/ng-template" id="form-when.html">
+  <h2>When did the incident(s) occur?</h2>
+
+  <form novalidate name="vm.steps[2].form">
+    <formly-form model="vm.model" fields="vm.steps[2].fields" form="vm.steps[2].form">
+      <div style="text-align:right">
+        <button ui-sref="where" type="submit" ng-disabled="vm.steps[2].form.$invalid || !vm.model.months.length" class="btn btn-primary submit-button">Next</button>
+      </div>
+    </formly-form>
+  </form>
+</script>
+
+<script type="text/ng-template" id="form-where.html">
+  <h2>Location of incidents?</h2>
+  <form novalidate name="vm.steps[3].form">
+    <formly-form model="vm.model" fields="vm.steps[3].fields" form="vm.steps[3].form">
+      <div style="text-align:right">
+        <button ui-sref="who" type="submit" ng-disabled="vm.steps[3].form.$invalid" class="btn btn-primary submit-button">Next</button>
+      </div>
+    </formly-form>
+  </form>
+</script>
+
+<script type="text/ng-template" id="form-who.html">
+  <h2>Ids of culprit</h2>
   <form novalidate name="vm.steps[4].form">
     <formly-form model="vm.model" fields="vm.steps[4].fields" form="vm.steps[4].form">
       <div style="text-align:right">
-        <button ui-sref="how" type="submit" ng-disabled="vm.steps[4].form.$invalid" class="btn btn-primary submit-button">Next</button>
+        <button ui-sref="done" type="submit" ng-disabled="vm.steps[4].form.$invalid" class="btn btn-primary submit-button">Next</button>
       </div>
     </formly-form>
   </form>

@@ -14,6 +14,47 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
   // retains the last known state of the step right before we navigated away from it.
   vm.steps = [
     {
+      stepName: 'what',
+      stepDisplayName: 'What',
+      valid: false,
+      visited: false,
+      fields: [
+        {
+          key: 'severity',
+          type: 'severitySelect',
+          templateOptions: {
+            label: 'Severity of behavior',
+            required: true
+          }
+        },
+        {
+          key: 'behaviors',
+          type: 'behaviorCheckList',
+          templateOptions: {
+            label: 'What did this person do?'          }
+        }
+      ]
+    },
+    {
+      stepName: 'how',
+      stepDisplayName: 'How',
+      valid: false,
+      visited: false,
+      fields: [
+        {
+          key: 'whenToSend',
+          type:  'select',
+          templateOptions: {
+            required: true,
+            options: [
+              {value: "unconditional", name: "Send the message within the next 24 hours"},
+              {value: "conditional", name: "Wait until the person in question gets at least one other message before sending mine. I don't want to be the first to send a message to the person in question"}
+            ]
+          }
+        }
+      ]
+    },
+    {
       stepName: 'when',
       stepDisplayName: 'When',
       valid: false,
@@ -63,8 +104,8 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
       ]
     },
     {
-      stepName: 'what',
-      stepDisplayName: 'What',
+      stepName: 'who',
+      stepDisplayName: 'Who',
       valid: false,
       visited: false,
       fields: [
@@ -76,28 +117,6 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
             required: true
           }
         },
-        {
-          key: 'severity',
-          type: 'severitySelect',
-          templateOptions: {
-            label: 'Severity of behavior',
-            required: true
-          }
-        },
-        {
-          key: 'behaviors',
-          type: 'behaviorCheckList',
-          templateOptions: {
-            label: 'What did this person do?'          }
-        }
-      ]
-    },
-    {
-      stepName: 'who',
-      stepDisplayName: 'Who',
-      valid: false,
-      visited: false,
-      fields: [
         {
           key: 'email',
           type: 'input',
@@ -113,25 +132,6 @@ angular.module('borderlineApp').controller('FormController',['$scope', '$resourc
           templateOptions: {
             label: 'Phone Number. If we receive other reports with this number, we will know they relate to the same person, even if the email is different',
             placeholder: 'Phone Number',
-          }
-        }
-      ]
-    },
-    {
-      stepName: 'how',
-      stepDisplayName: 'How',
-      valid: false,
-      visited: false,
-      fields: [
-        {
-          key: 'whenToSend',
-          type:  'select',
-          templateOptions: {
-            required: true,
-            options: [
-              {value: "unconditional", name: "Send the message within the next 24 hours"},
-              {value: "conditional", name: "Wait until the person in question gets at least one other message before sending mine. I don't want to be the first to send a message to the person in question"}
-            ]
           }
         }
       ]
